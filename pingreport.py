@@ -14,7 +14,7 @@ inactive_list = []
 p = {}
 with open('reader.txt', 'r') as f:
     filelines = f.readlines()
-for n in filelines: # start ping processes
+for n in filelines:
     ip = n
     p[ip] = Popen(['ping', '-c', '4', '-i', '0.2', ip], stdout=DEVNULL)
 
