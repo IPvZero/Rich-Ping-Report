@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import date
 from subprocess import Popen, DEVNULL
 from rich.console import Console
 from rich.table import Table
@@ -7,6 +8,7 @@ import itertools
 
 clear = "clear"
 os.system(clear)
+localtime = time.asctime(time.localtime(time.time()))
 active_list = []
 inactive_list = []
 p = {}
@@ -28,7 +30,7 @@ while p:
                 print(f"{ip} ERROR")
             break
 
-table = Table(title="PING REPORT")
+table = Table(title="PING REPORT \n" + localtime)
 table.add_column("Active Hosts", justify="center", style="green")
 table.add_column("Inactive Hosts", justify="center",style="red")
 for (a,i) in itertools.zip_longest(active_list,inactive_list):
